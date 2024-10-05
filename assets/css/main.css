@@ -1,0 +1,64 @@
+/* Additional styles */
+@import './additional-styles/utility-patterns.css';
+@import './additional-styles/theme.css';
+@import './additional-styles/custom-fonts.css';
+@import './language.css';
+@import 'the-new-css-reset/css/reset.css';
+@import 'aos/dist/aos.css';
+
+
+
+
+/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
+@layer utilities {
+    .rtl {
+        direction: rtl;
+    }
+}
+
+
+
+
+body {
+  --color-background: #ff00ff;
+  letter-spacing: -1px;
+  @apply 
+    font-noto font-aspekta antialiased font-[350]
+    bg-indigo-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 tracking-tight;
+}
+
+
+body.dark {
+    --color-background: #0000ff;
+}
+
+
+
+html.dark {
+  
+}
+
+
+
+:root {
+  --scrollbar-width: 8px;
+}
+
+::-webkit-scrollbar{
+  @apply w-2;
+  
+  &:horizontal {
+    @apply h-2;
+  }
+}
+
+
+::-webkit-scrollbar-track{
+  @apply bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb{
+  @apply 
+    bg-slate-700 hover:bg-slate-500
+    rounded-full;
+}

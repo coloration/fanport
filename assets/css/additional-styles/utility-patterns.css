@@ -1,0 +1,108 @@
+/* Typography */
+h1, h2, h3, h4 {
+    @apply font-bold text-slate-800 scroll-mt-24 dark:text-slate-200;
+}
+
+h1 {
+  @apply 
+    text-4xl 
+    md:text-5xl 
+    pt-2 pb-4 
+    text-gray-800 
+    dark:text-transparent dark:bg-clip-text 
+    dark:bg-gradient-to-b dark:from-indigo-300 dark:to-gray-200;
+}
+
+h2 {
+    @apply text-2xl md:text-3xl pt-6 pb-2;
+}
+
+h3 {
+    @apply text-lg md:text-xl pt-6 pb-2;
+}
+
+ul {
+    @apply space-y-2;
+}
+
+ul li {
+    @apply list-disc list-inside;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a {
+    @apply text-inherit;
+}
+
+a {
+   @apply text-blue-600 font-medium hover:underline;
+}
+
+
+
+/* Chrome; Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.border-horizontal {
+    @apply 
+        relative 
+        before:content-empty 
+        before:absolute 
+        before:inset-x-0 
+
+        
+        before:h-[1px]
+        before:bg-gradient-to-r 
+        before:from-transparent
+        before:via-indigo-300/40
+        before:to-transparent 
+        before:shadow-[-1px_0_0_0_theme(colors.white/.2)] 
+        
+        dark:before:via-indigo-300/16
+        dark:before:shadow-none;
+}
+
+.border-horizontal.top {
+    @apply before:top-0;
+}
+
+.border-horizontal.bottom {
+    @apply before:bottom-0;
+}
+
+.border-vertical {
+    @apply 
+        relative 
+        before:content-empty 
+        before:absolute 
+        before:inset-y-0 
+
+        
+        before:w-[1px]
+        before:bg-gradient-to-b 
+        before:from-transparent
+        before:via-indigo-300/40
+        before:to-transparent 
+        before:shadow-[-1px_0_0_0_theme(colors.white/.2)] 
+        
+        dark:before:via-indigo-300/16
+        dark:before:shadow-none;
+     
+}
+
+.border-vertical.left {
+    @apply before:left-0; 
+}
+.border-vertical.right {
+    @apply before:right-0;
+}

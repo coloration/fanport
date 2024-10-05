@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./bg/"></script>
+</head>
+<style>
+.input-like {
+  width: 120px; height: 30px;
+  border: 1px solid #eee;
+  border-radius: 1px;
+}
+
+.input-like.focus {
+  border-color: blue;
+}
+</style>
+<body>
+  <div class="input-like"></div>
+</body>
+<script>
+  // 模仿验证码输入框
+const inputLike = document.querySelector('.input-like')
+let isFocus = false
+
+inputLike.addEventListener('touchstart', function (e) {
+  e.stopPropagation()
+  inputLike.className = 'input-like focus'
+  isFocus = true
+})
+
+document.addEventListener('touchstart', function () {
+  inputLike.className = 'input-like'
+  isFocus = false
+})
+
+
+document.addEventListener('keyup', function (e) {
+  
+  if (!isFocus) return
+  const code = e.keyCode 
+  //backspace
+  const content = inputLike.textContent
+  if (code === 8) {
+    inputLike.textContent = content.slice(0, -1)
+  }
+  // number
+  else {
+    inputLike.textContent = content + e.key
+  }
+})
+</script>
+
+</html>

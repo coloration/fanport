@@ -1,0 +1,309 @@
+/**
+ * Dracula Theme originally by Zeno Rocha [@zenorocha]
+ * https://draculatheme.com/
+ *
+ * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply 
+  text-slate-700 bg-slate-50 dark:text-gray-200 dark:bg-slate-800
+    text-shadow-none text-left whitespace-pre rounded;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  @apply relative py-5 mt-4 mb-5 px-4 rounded-sm overflow-auto;
+}
+
+/* code[class*='language-']::selection,
+pre[class*='language-']::selection,
+code[class*='language-'] ::selection,
+pre[class*='language-'] ::selection {
+  @apply bg-teal-900 text-slate-100;
+} */
+
+/* Inline code */
+:not(pre) > code,
+:not(pre) > code[class*='language-'] {
+  border-radius: 0.3em;
+  white-space: normal;
+  @apply py-1 px-2 text-sm 
+     text-violet-600 bg-violet-50
+     dark:text-violet-200 dark:bg-violet-900;
+}
+
+.dark {
+  & .token.comment,
+  & .token.prolog,
+  & .token.doctype,
+  & .token.cdata {
+    color: #6272a4;
+  }
+
+  & .token.punctuation {
+    color: #f8f8f2;
+  }
+
+  & .namespace {
+    opacity: 0.7;
+  }
+
+  & .token.property,
+  & .token.tag,
+  & .token.symbol,
+  & .token.deleted,
+  & .token.keyword,
+  & .token.operator {
+    color: #ff79c6;
+  }
+
+  & .token.constant,
+  & .token.boolean,
+  & .token.number {
+    color: #bd93f9;
+  }
+
+  & .token.selector,
+  & .token.attr-name,
+  & .token.string,
+  & .token.char,
+  & .token.inserted {
+    color: #f1fa8c;
+  }
+
+  & .token.entity,
+  & .token.url,
+  & .language-css & .token.string,
+  & .style & .token.string,
+  & .token.variable {
+    color: #f8f8f2;
+  }
+
+  & .token.atrule,
+  & .token.attr-value,
+  & .token.function,
+  & .token.class-name {
+    color: #50fa7b;
+  }
+
+  & .token.builtin {
+    color: #8be9fd;
+  }
+
+  & .token.regex,
+  & .token.important {
+    color: #ffb86c;
+  }
+
+  & .token.important,
+  & .token.bold {
+    font-weight: bold;
+  }
+
+  & .token.italic {
+    font-style: italic;
+  }
+
+  & .token.entity {
+    cursor: help;
+  }
+}
+
+
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+  color: #f76d47;
+}
+
+[class*='language-'] .namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.keyword,
+.token.operator {
+  color: #7c4dff;
+}
+
+.token.constant,
+.token.boolean,
+.token.number {
+  color: #7c4dff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.inserted {
+  color: #a6920e;
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #c4ab00;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #50fa7b;
+}
+
+.token.builtin {
+  color: #8be9fd;
+}
+
+.token.regex,
+.token.important {
+  color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.atrule {
+  color: #7c4dff;
+}
+
+.token.attr-name {
+  color: #39adb5;
+}
+
+.token.attr-value {
+  color: #f6a434;
+}
+
+.token.attribute {
+  color: #f6a434;
+}
+
+.token.builtin {
+  color: #39adb5;
+}
+
+.token.cdata {
+  color: #39adb5;
+}
+
+.token.char {
+  color: #39adb5;
+}
+
+.token.class {
+  color: #39adb5;
+}
+
+.token.class-name {
+  color: #6182b8;
+}
+
+.token.comment {
+  color: #aabfc9;
+}
+
+.token.doctype {
+  color: #aabfc9;
+}
+
+.token.entity {
+  color: #e53935;
+}
+
+.token.function {
+  color: #7c4dff;
+}
+
+.token.hexcode {
+  color: #f76d47;
+}
+
+.token.id {
+  color: #7c4dff;
+  font-weight: bold;
+}
+
+.token.important {
+  color: #7c4dff;
+  font-weight: bold;
+}
+
+.token.inserted {
+  color: #39adb5;
+}
+
+.token.keyword {
+  color: #7c4dff;
+}
+
+.token.number {
+  color: #f76d47;
+}
+
+.token.prolog {
+  color: #aabfc9;
+}
+
+.token.pseudo-class {
+  color: #f6a434;
+}
+
+.token.pseudo-element {
+  color: #f6a434;
+}
+
+.token.punctuation {
+  color: #39adb5;
+}
+
+.token.regex {
+  color: #6182b8;
+}
+
+.token.selector {
+  color: #e53935;
+}
+
+.token.string {
+  color: #f6a434;
+}
+
+.token.unit {
+  color: #f76d47;
+}
+
+.token.url {
+  color: #e53935;
+}
+
+.token.variable {
+  color: #e53935;
+}
