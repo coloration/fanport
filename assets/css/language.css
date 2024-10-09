@@ -8,7 +8,7 @@
 code[class*='language-'],
 pre[class*='language-'] {
   @apply 
-  text-slate-700 bg-slate-50 dark:text-gray-200 dark:bg-slate-800
+  text-slate-700 dark:text-gray-200
     text-shadow-none text-left whitespace-pre rounded;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   word-spacing: normal;
@@ -21,7 +21,7 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  @apply relative py-5 mt-4 mb-5 px-4 rounded-sm overflow-auto;
+  @apply relative py-3 px-4 rounded-sm overflow-auto bg-indigo-50  dark:bg-slate-700/10;
 }
 
 /* code[class*='language-']::selection,
@@ -34,11 +34,11 @@ pre[class*='language-'] ::selection {
 /* Inline code */
 :not(pre) > code,
 :not(pre) > code[class*='language-'] {
-  border-radius: 0.3em;
   white-space: normal;
-  @apply py-1 px-2 text-sm 
-     text-violet-600 bg-violet-50
-     dark:text-violet-200 dark:bg-violet-900;
+  @apply px-2 text-sm
+  box-border
+     text-indigo-600 rounded-sm bg-indigo-50 border-1 border-solid border-indigo-300
+     dark:text-indigo-200 dark:bg-indigo-900 dark:border-transparent;
 }
 
 .dark {

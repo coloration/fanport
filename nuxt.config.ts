@@ -27,15 +27,33 @@ export default defineNuxtConfig({
       toc: { depth: 3, searchDepth: 3 }
     },
     highlight: {
+      theme: {
+        // Default theme (same as single string)
+        default: 'github-light',
+        // Theme used if `html.dark`
+        dark: 'github-dark',
+      },
       langs: [
         'bash',
         'ts',
         'js',
         'css',
         'html',
+        'xml',
+        'yaml',
+        'toml',
+        'lua',
         'java',
         'json',
+        'c',
+        'cpp',
+        'csharp',
+        'dart',
         'sql',
+        'python',
+        'rust',
+        'diff',
+        'mermaid',
       ]
     }
   }

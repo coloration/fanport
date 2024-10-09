@@ -6,6 +6,8 @@ interface TocItem {
   id: string, depth: number, text: string, children?: TocItem[]
 }
 
+const titleHeight = 5 * 16
+let screenRestHeight = 0
 const { toc = [] } = defineProps<{
   toc: TocItem[]
 }>()
@@ -13,12 +15,28 @@ const { toc = [] } = defineProps<{
 const activeIds = ref<string[]>([])
 
 const { y } = useWindowScroll({ behavior: 'smooth' }) 
+const flatToc = computed(() => {
+  const result: TocItem[] = []
+  let tocRest: TocItem[] = toc.slice()
+
+  while(tocRest.length > 0) {
+    const head = tocRest.shift()
+    if (head) {
+      result.push(head)
+      if (head.children) {
+        tocRest = tocRest.concat(head.children)
+      }
+    }
+  }
+  
+  return result
+})
 
 function getTargetTop(id: string) {
   const target = document.getElementById(id)
   if (!target) return -1
 
-  return target.offsetTop - 5 * 16
+  return target.offsetTop - titleHeight
 }
 
 
@@ -28,13 +46,22 @@ function handleClick(id: string) {
   y.value = yOffset
 }
 
+function calcActiveTitle() {
+  
+  activeIds.value = flatToc.value.filter(item => {
+    const titleDom = document.getElementById(item.id)
+    const topDistance = titleDom?.offsetTop ?? 0
+    return topDistance > y.value && topDistance < (y.value + screenRestHeight)
+  })
+  .map(item => item.id)
+}
 
-watchDebounced(y, () => { 
-  toc.flat()
-  console.log('changed!', toc) 
-}, { debounce: 300, maxWait: 500 },
-)
+watchDebounced(y, calcActiveTitle, { debounce: 300, maxWait: 500 })
 
+onMounted(() => {
+  screenRestHeight = window.screen.availHeight - titleHeight
+  calcActiveTitle()
+})
 
 </script>
 
@@ -50,17 +77,18 @@ watchDebounced(y, () => {
             <!-- The data-scrollspy-link attribute makes the scrollspy work -->
             <span
               @click="handleClick(item.id)"
-              class="toc-link">
+              class="toc-link"
+              :class="{ active: activeIds.includes(item.id) }">
               {{ item.text }}
             </span>
-            <ul v-if="item.children" class="pl-2">
+            <ul v-if="item.children" class="pl-4">
               <li v-for="(subItem, j) in item.children" :key="j"  class="toc-row">
-                <a 
-                  data-scrollspy-link 
+                <span 
                   class="toc-link"
-                  :href="`#${subItem.id}`">
+                  :class="{ active: activeIds.includes(subItem.id) }"
+                  @click="handleClick(subItem.id)">
                   {{ subItem.text }}
-                </a>
+                </span>
               </li>
             </ul>
           </li>
@@ -68,12 +96,15 @@ watchDebounced(y, () => {
         <!-- <div class="toc-col-title">
           Community
         </div> -->
-        <div class="toc-divider"></div>
-        <div class="pl-4" v-show="y > 500">
-          <button @click="y = 0" class="cursor-pointer text-center px-4 text-slate-500 border-1 border-solid border-slate-200 rounded text-sm">
-            Go Top
-          </button>
-        </div>
+        <div v-show="y > 500" class="border-horizontal bottom my-4"></div>
+        <button 
+          v-show="y > 500" 
+          @click="y = 0" 
+          data-aos="fade-up"
+          class="text-xs pt-3 cursor-pointer text-center px-4 text-slate-500 font-bold">
+          BACK TOP
+          <IconArrow class="-rotate-90 ml-1" />
+        </button>
       </div>
     </div>
   </nav>
@@ -81,7 +112,7 @@ watchDebounced(y, () => {
 
 <style lang="postcss">
 .the-toc {
-  @apply hidden xl:block w-48 shrink-0;
+  @apply hidden xl:block w-48 shrink-0 bg-blur;
 }
 
 .anchor-top {
@@ -93,21 +124,30 @@ watchDebounced(y, () => {
     relative 
     block 
     py-1.5 
+    pl-4
     text-nowrap 
     transition-gpu
     text-slate-600
     cursor-pointer
+    hover:no-underline
     dark:text-slate-400
     hover:text-slate-900
-    dark:hover:text-slate-300 
+    dark:hover:text-slate-300;
 
+    
+    
+}
 
-    before:absolute 
-    before:-left-px 
-    before:top-2 
-    before:bottom-2 
-    before:w-0.5 
-    hover:no-underline;
+.toc-link.active {
+  @apply text-indigo-600 dark:text-indigo-400 font-bold
+  before:content-empty
+  before:absolute 
+  before:left-0
+  before:top-2 
+  before:bottom-2 
+  before:w-[0.2rem]
+  before:bg-indigo-600
+  dark:before:bg-indigo-400;
 }
 
 .toc-row {
@@ -130,6 +170,6 @@ watchDebounced(y, () => {
 }
 
 .toc-col-list {
-  @apply text-sm ml-4;
+  @apply text-sm;
 }
 </style>

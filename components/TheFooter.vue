@@ -12,12 +12,12 @@ defineOptions({ name: 'the-footer' })
       <div class="sm:col-span-12 lg:col-span-4 space-y-2">
         <div>
           <!-- Logo -->
-          <nuxt-link class="inline-flex" to="/" aria-label="Cruip">
+          <nuxt-link class="inline-flex" to="/" aria-label="fan-port">
             <img src="~/assets/images/logo.svg" width="32" height="32" alt="Docs" />
           </nuxt-link>
         </div>
         <div class="text-sm text-gray-600">
-          &copy; Cruip.com - All rights reserved.
+          &copy; fan-port.com - All rights reserved.
         </div>
       </div>
       <!-- 2nd block -->

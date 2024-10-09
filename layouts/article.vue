@@ -45,7 +45,7 @@ const {
           <article class="flex xl:space-x-12">
 
             <!-- Main area -->
-            <div class="min-w-0 min-h-100vh flex-1 pb-40">
+            <div class="layout-article-area">
               <h1 class="mb-6" v-if="page?.title">{{ page.title }}</h1>
 
               <slot></slot>
@@ -63,4 +63,18 @@ const {
 .layout-article {
   @apply;
 }
+
+.layout-article-area {
+  @apply min-w-0 min-h-100vh flex-1 pb-40;
+
+  > div {
+    @apply space-y-2 leading-6;
+
+    & p {
+      @apply space-x-1;
+    }
+  }
+}
+
+
 </style>

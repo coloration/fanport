@@ -12,14 +12,12 @@ const innerExpand = ref(expand)
 <template>
   <div class="the-accordion">
     <button
-      class="flex items-center cursor-pointer w-full text-slate-800 font-medium text-left dark:text-slate-200"
+      class="the-accordion-head"
       @click.prevent="innerExpand = !innerExpand"
       :aria-expanded="innerExpand"
     >
-      <div class="shrink-0 mr-3">
-        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': innerExpand }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
-          <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z" />
-        </svg>
+      <div class="shrink-0 mr-2">
+        <IconArrow :class="{ 'rotate-90': innerExpand }" />
       </div>
       <span class="the-accordion-title">{{title}}</span>      
     </button>
@@ -34,6 +32,23 @@ const innerExpand = ref(expand)
 </template>
 <style lang="postcss">
 .the-accordion {
-  @apply mt-3;
+  @apply;
+}
+
+.the-accordion-head {
+  @apply 
+    flex items-center 
+    cursor-pointer 
+    w-full 
+    text-slate-800 
+    font-medium 
+    text-left 
+    dark:text-slate-200
+    
+    ;
+}
+
+.the-accordion-title {
+  @apply pl-1 py-.5 rounded transition-colors hover:bg-indigo-200/50 dark:hover:bg-indigo-800/40 flex-1;
 }
 </style>

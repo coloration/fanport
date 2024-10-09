@@ -85,30 +85,42 @@ onUnmounted(() => {
                     href="#0"
                     @click.prevent="parentLink.handleClick()"
                   >
-                    <DecoCube color="purple" class="mr-3" />
+                    <DecoCube color="purple" class="mr-1" />
                     <span>{{ level1Nav.title }}</span>
                   </a>
-                  <ul class="border-vertical left mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">              
+                  <ul class="border-vertical left mb-3 ml-1 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">              
                     <li class="mt-3" v-for="(level2Nav, j) in level1Nav.children" :key="j">
                   
                       <SidebarLinkSubgroup 
-                      v-if="!!level2Nav.children" 
-                      :title="level2Nav.title" 
-                      open>
-                        <li class="mt-3" v-for="(level3Nav, k) in level2Nav.children">
-                          <NuxtLink :to="level3Nav._path" custom v-slot="{ href, navigate, isExactActive }">
-                            <a 
-                              class="flex items-center font-bold" 
-                              :class="isExactActive ? 'text-blue-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'" 
-                              :href="href" 
-                              @click="navigate">
-                            {{ level3Nav.title }}
-                          </a>
-                          </NuxtLink>
-                        </li>
+                        v-if="!!level2Nav.children" 
+                        :title="level2Nav.title" 
+                        :open="currentRoute.fullPath.includes(level2Nav._path)">
+                          <li class="mt-3" v-for="(level3Nav, k) in level2Nav.children" :key="k">
+                            <NuxtLink 
+                              :to="level3Nav._path" 
+                              custom 
+                              v-slot="{ href, navigate, isExactActive }">
+                         
+                              <a 
+                                class="flex items-center font-bold text-xs text-nowrap" 
+                                :class="isExactActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'" 
+                                :href="href" 
+                                @click="navigate"
+                                v-bind="$attrs"
+                                >
+                              {{ level3Nav.title }}
+                            </a>
+                            </NuxtLink>
+                          </li>
                       </SidebarLinkSubgroup>
                       <NuxtLink v-else :to="level2Nav._path" custom v-slot="{ href, navigate, isExactActive }">
-                        <a class="flex items-center space-x-3 font-medium" :class="isExactActive ? 'text-blue-600' : 'text-slate-800 dark:text-slate-200'" :href="href" @click="navigate">
+                        <a 
+                          class="flex items-center space-x-3 font-medium text-nowrap" 
+                          :class="isExactActive ? 'text-blue-600' : 'text-slate-800 dark:text-slate-200'" 
+                          :href="href" 
+                          @click="navigate"
+                          v-bind="$attrs"
+                        >
                           {{ level2Nav.title }}
                         </a>
                       </NuxtLink>
@@ -121,7 +133,7 @@ onUnmounted(() => {
                     :class="{ 'before:hidden': !currentRoute.fullPath.includes(level1Nav._path) }"
                     :to="level1Nav._path"
                   >
-                    <DecoCube color="green" class="mr-3" />
+                    <DecoCube color="green" class="mr-1" />
                     <span>{{ level1Nav.title }}</span>
                   </NuxtLink>
                 </li>
