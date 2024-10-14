@@ -12,9 +12,9 @@ defineOptions({ name: 'the-header' })
 
     <TheSection class="the-header-content">
       <div class="the-header-logo">
-        <NuxtLink to="/" aria-label="binyu.me">
+        <a href="/">
           <img src="~/assets/images/logo.svg" width="32" height="32" alt="Docs" />
-        </NuxtLink>
+        </a>
       </div>
       <div class="flex-1">
         <Search />

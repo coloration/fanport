@@ -1,7 +1,3 @@
----
-title: windows 终端
----
-
 
 ## windows terminal 配置
 
@@ -13,7 +9,7 @@ title: windows 终端
 
 **一般windows11都会自带** windows terminal. 如果没有去 `Microsoft Store` 搜索下载(`win`键，输入即可打开软件)
 
-### 2. 安装 git bash 
+### 1. 安装 git bash 
 
 > 提供 linux 命令, 也可以自己安装 `mingw64`
 

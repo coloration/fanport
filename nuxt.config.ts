@@ -23,8 +23,9 @@ export default defineNuxtConfig({
   },
   content: {
     documentDriven: true,
+    
     markdown: {
-      toc: { depth: 3, searchDepth: 3 }
+      toc: { depth: 3, searchDepth: 3,  },
     },
     highlight: {
       theme: {
@@ -54,6 +55,9 @@ export default defineNuxtConfig({
         'rust',
         'diff',
         'mermaid',
+        'scss',
+        'tsx',
+        'jsx'
       ]
     }
   }

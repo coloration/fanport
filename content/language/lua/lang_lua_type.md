@@ -5,14 +5,8 @@ tag:
 - lua
 ---
 
-参考
-[programing in lua](http://www.centoscn.com/uploads/file/20130903/13781389409335.pdf)
 
-- [注释](#comment)
-- [值和类型](value_type)
-- [运算符](#operator)
-- [表](#table)
-- [赋值](#assignment)
+ref - [programing in lua](http://www.centoscn.com/uploads/file/20130903/13781389409335.pdf)
 
 ## 注释
 

@@ -6,7 +6,7 @@ tag:
 - language
 ---
 
-[[toc]]
+
 
 
 ### Number

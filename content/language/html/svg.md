@@ -5,7 +5,7 @@ tag:
 - svg
 ---
 
-[[toc]]
+
 
 ### SVG intro
 

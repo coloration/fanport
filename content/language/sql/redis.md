@@ -2,7 +2,7 @@
 title: Redis
 ---
 
-[[toc]]
+
 
 - [Redis 文档](http://www.redis.cn/)
 - [npm:ioredis 教程](http://www.npmdoc.org/iorediszhongwenwendangioredis-jszhongwenjiaochengjiexi.html)
