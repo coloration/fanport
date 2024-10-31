@@ -1,6 +1,11 @@
 [build]
+  base = "/"
   publish = "dist"
-  command = "npm run generate"
+  command = "pnpm generate"
+
+[build.environment]
+  NPM_FLAGS = "--prefix=/dev/null"
+  NODE_VERSION = "20"
 
 [context.production]
   environment = { NODE_ENV = "production" }
