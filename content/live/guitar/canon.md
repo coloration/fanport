@@ -1,5 +1,4 @@
 ---
-layout: guitar
 title: カノン（卡农）
 date: 2016-05-25
 tag:
@@ -18,4 +17,4 @@ tag:
 <div class="vex-tabdiv" id="tab-0">
 </div>
 
-![](./i/canon.png)
+![](/images/canon/canon.png)

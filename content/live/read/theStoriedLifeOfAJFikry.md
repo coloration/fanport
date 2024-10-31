@@ -1,5 +1,5 @@
 ---
-title: "《岛上书店》"
+title: 《岛上书店》
 date: 2018-11-04
 tag:
 - read

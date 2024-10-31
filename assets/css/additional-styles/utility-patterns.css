@@ -32,9 +32,17 @@ h3 {
     @apply text-lg md:text-xl pt-6 pb-2;
 }
 
-ul {
+ol, ul {
     @apply space-y-2;
+    & ul, & ol {
+        @apply pl-6 pt-2;
+    }
 }
+
+strong {
+    @apply font-bold
+}
+
 
 ul li {
     @apply list-disc list-inside;
@@ -50,6 +58,36 @@ h4 a {
 a {
    @apply text-blue-600 font-medium hover:underline;
 }
+
+table {
+    @apply table-auto w-full my-2 border-b border-b-solid border-slate-200 dark:border-slate-800;
+}
+
+thead {
+    @apply text-left text-slate-800 dark:text-slate-200 whitespace-nowrap;
+
+    & tr {
+        @apply text-left text-slate-800 dark:text-slate-200 whitespace-nowrap;
+    }
+
+    & th {
+        @apply font-medium px-2 first:pl-0 last:pr-0 py-3;
+    }
+}
+
+tbody {
+    & tr {
+        @apply border-t border-t-solid border-slate-300 dark:border-slate-800;
+    }
+
+    & td {
+        @apply px-2 first:pl-0 first:whitespace-nowrap last:pr-0 py-2;
+
+
+    }
+}
+
+
 
 
 

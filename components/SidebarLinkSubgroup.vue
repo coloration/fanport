@@ -1,7 +1,7 @@
 <template>
   <TheAccordion :expand="open" :title="title">
   <!-- 3rd level -->
-    <ul class="mb-3 border-l border-slate-200 dark:border-slate-800">
+    <ul class="mb-2 pl-2 border-vertical left">
       <slot />
     </ul>
 </TheAccordion>

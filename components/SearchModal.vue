@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { ref, nextTick, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-// import metadata from '@/meta/meta-short.json'
 import { useEventListener } from '@vueuse/core';
-// import { useNavStore } from '@/composables';
+import type { NavItem } from '@nuxt/content';
 
 const props = defineProps<{
   id?: string
@@ -16,12 +15,13 @@ const emit = defineEmits<{
   (e: 'open-modal'): void
 }>();
 
-// const { changeNav } = useNavStore()
+
+const { navigation } = useContent()
+
 const router = useRouter()
 const modalContent = ref<HTMLDivElement>()
 const searchInput = ref<HTMLInputElement>()
 const search = ref('')
-const meta = ref<any[]>([])
 const filterMetadata = ref<any[]>([])
 const selectIndex = ref(0)
 // close on click outside
@@ -57,9 +57,26 @@ const keyHandler = (event: KeyboardEvent) => {
 }
 
 
+const meta = computed(() => {
+  // 3层路由展平
+  return navigation.value.reduce((flattenNav, topGroup: NavItem) => {
+
+    return (topGroup.children ?? []).reduce((flattenNav, middleGroup: NavItem) => {
+
+      return (middleGroup.children ?? []).reduce((flattenNav, navItem: NavItem) => {
+        return flattenNav.concat({
+          path: navItem._path,
+          title: navItem.title,
+          tag: `${topGroup.title}.${middleGroup.title}`
+        })
+      }, flattenNav)
+    }, flattenNav)
+  }, [])
+})
+
+
 function handleJump(link: any) {
-  console.log(link.cIndex, link.gIndex, link.index)
-  // changeNav(link.cIndex, link.gIndex, link.index)
+  router.push(link.path)
   emit('close-modal')
   clear()
 }
@@ -108,8 +125,8 @@ watch(() => props.modalOpen, (open) => {
 })
 
 watch(search, (s) => {
-  filterMetadata.value = s === '' ? [] : meta.value.filter((link: any) => {
-    return link.search.indexOf(s) >= 0
+  filterMetadata.value = s === '' ? [] : meta.value.filter((nav: any) => {
+    return nav.path.indexOf(s) >= 0 || nav.title.indexOf(s) >= 0
   })
   // console.log(filterMetadata.value)
 })
@@ -153,35 +170,33 @@ watch(search, (s) => {
           <!-- Popular -->
           <div>
             <div class="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Page</div>
-            <ul v-if="(filterMetadata.length > 0)">
-              <li>
-                <div
-                  :key="i"
-                  @click="handleJump(link)"
-                  :to="'/' + link.value"
-                  v-for="(link, i) in filterMetadata"
-                  :class="{'bg-slate-100 dark:bg-slate-700': i === selectIndex }"
-                  class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" 
-                >
-                  <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
-                  </svg>
-                  <div class="flex justify-between flex-1">
-                    <span>{{ link.name }}</span>
-                    <span class="text-indigo-400 text-xs px-1 py-[2px] rounded-sm">{{ link.category }}.{{ link.group }}</span>
-                  </div>
+            <div v-if="(filterMetadata.length > 0)">
+              <div
+                :key="i"
+                @click="handleJump(link)"
+                :to="'/' + link.value"
+                v-for="(link, i) in filterMetadata"
+                :class="{'bg-slate-100 dark:bg-slate-700': i === selectIndex }"
+                class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" 
+              >
+                <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z" />
+                </svg>
+                <div class="flex justify-between flex-1">
+                  <span>{{ link.title }}</span>
+                  <span class="text-indigo-400 text-xs px-1 py-[2px] rounded-sm">{{ link.tag }}</span>
                 </div>
-              </li>
-            </ul>
+              </div>
+            </div>
             <div v-else class="text-sm font-medium text-slate-400 px-2 mb-2 dark:text-slate-500 uppercase">
               input keyword
             </div>
           </div>
           <!-- Actions -->
-          <!-- <div>
+          <div>
             <div class="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
             <ul>
-              <li>
+              <li class="list-none">
                 <NuxtLink class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" to="#0" @click="$emit('close-modal')">
                   <svg class="w-3 h-3 fill-blue-600 shrink-0 mr-3" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z" />
@@ -189,7 +204,7 @@ watch(search, (s) => {
                   <span class="font-medium">Contact support</span>
                 </NuxtLink>
               </li>
-              <li>
+              <li class="list-none">
                 <NuxtLink class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded dark:text-slate-200 dark:hover:bg-slate-700" to="#0" @click="$emit('close-modal')">
                   <svg class="w-3 h-3 fill-purple-500 shrink-0 mr-3" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z" />
@@ -198,7 +213,7 @@ watch(search, (s) => {
                 </NuxtLink>
               </li>
             </ul>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

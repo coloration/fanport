@@ -21,7 +21,7 @@ defineOptions({ name: 'the-footer' })
         </div>
       </div>
       <!-- 2nd block -->
-      <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
+      <!-- <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
         <h3 class="text-sm font-medium pt-0!">Product</h3>
         <ul class="text-sm space-y-2">
           <li>
@@ -40,10 +40,10 @@ defineOptions({ name: 'the-footer' })
             <a class="text-gray-600 hover:text-gray-900 transition" to="#0">Our method</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <!-- 3rd block -->
-      <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
+      <!-- <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
         <h3 class="text-sm font-medium pt-0!">Company</h3>
         <ul class="text-sm space-y-2">
           <li>
@@ -64,10 +64,10 @@ defineOptions({ name: 'the-footer' })
               statements</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <!-- 4th block -->
-      <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
+      <!-- <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
         <h3 class="text-sm font-medium pt-0!">Resources</h3>
         <ul class="text-sm space-y-2">
           <li>
@@ -81,10 +81,10 @@ defineOptions({ name: 'the-footer' })
               vulnerability</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <!-- 5th block -->
-      <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
+      <!-- <div class="sm:col-span-6 md:col-span-3 lg:col-span-2 space-y-2">
         <h3 class="text-sm font-medium pt-0!">Social</h3>
         <ul class="flex gap-1">
           <li>
@@ -118,7 +118,7 @@ defineOptions({ name: 'the-footer' })
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </TheSection>
     <!-- Big text -->
     <div class="relative -mt-10 h-40 w-full -z-10" aria-hidden="true">

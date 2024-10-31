@@ -1,3 +1,7 @@
+---
+title: Computer Vision
+---
+
 ## CV pipeline
 
 1. input data

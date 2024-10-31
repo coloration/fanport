@@ -88,14 +88,16 @@ onUnmounted(() => {
                     <DecoCube color="purple" class="mr-1" />
                     <span>{{ level1Nav.title }}</span>
                   </a>
-                  <ul class="border-vertical left mb-3 ml-1 pl-6 border-l border-slate-200 dark:border-slate-800" :class="{ 'hidden': !parentLink.expanded }">              
-                    <li class="mt-3" v-for="(level2Nav, j) in level1Nav.children" :key="j">
+                  <ul 
+                    class="border-vertical left mb-3 ml-1 pl-4 border-l border-slate-200 dark:border-slate-800" 
+                    :class="{ 'hidden': !parentLink.expanded }">              
+                    <li class="mt-1!" v-for="(level2Nav, j) in level1Nav.children" :key="j">
                   
                       <SidebarLinkSubgroup 
                         v-if="!!level2Nav.children" 
                         :title="level2Nav.title" 
                         :open="currentRoute.fullPath.includes(level2Nav._path)">
-                          <li class="mt-3" v-for="(level3Nav, k) in level2Nav.children" :key="k">
+                          <li class="mb-1" v-for="(level3Nav, k) in level2Nav.children" :key="k">
                             <NuxtLink 
                               :to="level3Nav._path" 
                               custom 

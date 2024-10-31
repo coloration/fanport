@@ -5,7 +5,7 @@ index: Framework.Vue.Syntax
 
 
 
-## 3.4 <灌篮高手 Slam Dunk>
+## 3.4 灌篮高手 Slam Dunk
 
 > 新特性(Feature)
 
@@ -72,7 +72,7 @@ watchEffect(() => console.log(isEven.value)) // logs true
 count.value = 2 // logs true again
 ```
 
-## 3.3 <浪客剑心 Rurouni Kenshin>
+## 3.3 浪客剑心 Rurouni Kenshin
 
 > TS 支持
 
@@ -207,12 +207,12 @@ defineOptions({ inheritAttrs: false })
 
 ---
 
-## 3.2 <五等分的花嫁 Quintessential Quintuplets>
+## 3.2 五等分的花嫁 Quintessential Quintuplets
 
 > SFC 新特性
 
 
-### SFC.`v-memo`
+### SFC v-memo
 
 新的组件缓存策略 
 
@@ -227,14 +227,14 @@ defineOptions({ inheritAttrs: false })
 
 ---
 
-### ✅ SFC.`<script setup>`
+### ✅ SFC setup flag
 
 setup 被正式引入 Vue。简化了 Vue 单文件组件仅使用 Composition API 时的语法。
 
 1. 声明的变量, 指令和组件可以直接应用到模板中
 2. 除 setup 外选项的语法补充
 
-- [关于setup更多语法]('/framework/01-vue/setup')。
+- [关于setup更多语法](./setup)
 - [官方文档](https://cn.vuejs.org/api/sfc-script-setup.html#script-setup)
 
 
@@ -296,7 +296,7 @@ p {
 
 Note: css自定义变量会在组件根元素上设置，并非本元素
 
-- [官方文档](https://cn.vuejs.org/api/sfc-css-features.html#v-bind-in-css)
+- [官方文档](//cn.vuejs.org/api/sfc-css-features.html#v-bind-in-css)
 
 ---
 
@@ -317,9 +317,10 @@ Note: css自定义变量会在组件根元素上设置，并非本元素
 解决问题: 不同组件使用同一个组合API时, 因互相持有相同变量, 而无法解耦的情况.
 
 
-#### Effect Scope API.`effectScope()`
-#### Effect Scope API.`getCurrentScope()`
-#### Effect Scope API.`onScopeDispose()`
+
+#### effectScope()
+#### getCurrentScope()
+#### onScopeDispose()
 
 --- 
 

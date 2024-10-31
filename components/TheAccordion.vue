@@ -49,6 +49,13 @@ const innerExpand = ref(expand)
 }
 
 .the-accordion-title {
-  @apply pl-1 py-.5 rounded transition-colors hover:bg-indigo-200/50 dark:hover:bg-indigo-800/40 flex-1;
+  @apply 
+    pl-1 
+    py-.5 
+    rounded 
+    transition-colors 
+    hover:bg-indigo-200/50 
+    dark:hover:bg-indigo-800/40 
+    flex-1;
 }
 </style>

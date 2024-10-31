@@ -57,7 +57,8 @@ export default defineNuxtConfig({
         'mermaid',
         'scss',
         'tsx',
-        'jsx'
+        'jsx',
+        'dockerfile',
       ]
     }
   }

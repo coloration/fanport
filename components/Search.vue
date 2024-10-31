@@ -16,7 +16,7 @@ const searchModalOpen = ref(false);
       <svg class="w-4 h-4 fill-slate-500 mr-3 shrink-0 dark:fill-slate-400" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
         <path d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z" />
       </svg>
-      <span>Search<span class="hidden sm:inline"> for anything</span>…</span>
+      <span>Search<span class="hidden sm:inline"> in website</span>…</span>
     </div>
     <div class="search-shortcut">/</div>
   </button>
@@ -37,8 +37,7 @@ const searchModalOpen = ref(false);
 }
 
 .search-container {
-  font-family: lobster;
-  @apply w-full sm:w-[380px] text-[15px] bg-white text-slate-400 inline-flex items-center justify-between leading-5 pl-3 pr-2 py-[7px] rounded border border-slate-200 hover:border-slate-300 shadow-sm whitespace-nowrap dark:text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600;
+  @apply w-full sm:w-[220px] text-[15px] bg-white text-slate-400 inline-flex items-center justify-between leading-5 pl-3 pr-2 py-[7px] rounded border border-slate-200 hover:border-slate-300 shadow-sm whitespace-nowrap dark:text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600;
 }
 
 .search-shortcut {
