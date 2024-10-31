@@ -3,9 +3,7 @@
   command = "npm run generate"
 
 [context.production]
-  environment = { 
-    NODE_ENV = "production" 
-  }
+  environment = { NODE_ENV = "production" }
 
 [[redirects]]
   from = "/*"
