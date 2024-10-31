@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.2.1",
+    "@nuxt/content": "^2.13.2",
+    "@nuxt/image": "^1.8.0",
     "@unocss/nuxt": "^0.62.4",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
@@ -23,8 +25,6 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.13.2",
-    "@nuxt/image": "^1.8.0",
     "@types/aos": "^3.0.7",
     "@types/nprogress": "^0.2.3"
   }
