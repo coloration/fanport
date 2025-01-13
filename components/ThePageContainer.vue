@@ -14,7 +14,9 @@ const { y } = useWindowScroll({ behavior: 'smooth' })
     <slot></slot>
     
     <slot name="footer">
-      <TheFooter />
+      <!-- 
+        <TheFooter />
+      -->
     </slot>
   </div>
 </template>

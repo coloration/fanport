@@ -162,6 +162,11 @@ $ docker-compose up -d
 ```
 
 
+## docker 中 GPU 的使用 
+
+<https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html>
+
+
 
 - [docker-slim - 一个 Docker 镜像文件的瘦身工具，据称最好情况下，可以让镜像文件体积缩小为原来的30分之一。](https://github.com/docker-slim/docker-slim)
 - [如何将 Web 应用做成 Docker？](https://itnext.io/dockerizing-modern-web-apps-cd9667eebf44)
