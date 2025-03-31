@@ -350,3 +350,47 @@ redisContext(async (client) => {
 ## 事务
 
 redis 事务不能回滚，只能用来保证操作的原子性
+
+
+
+
+
+### Docker Compose
+
+``` yml
+services:
+  ### other
+  
+  db-redis:
+    image: redis:alpine
+    container_name: db-redis
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - 6379:6379
+    volumes:
+      - data_redis:/data
+    networks:
+      - demo-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 3
+      start_period: 5s
+  hono-service:
+    build: ./server
+    container_name: hono-service
+    restart: always
+    ports:
+      - 9750:9750
+    environment:
+      REDIS_HOSTNAME: db-redis
+      REDIS_PORT: 6379
+      PORT: 9750
+    depends_on:
+      db-redis:
+        condition: service_healthy
+    networks:
+      - demo-network
+volumes:
+  data_redis:
+```

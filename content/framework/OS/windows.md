@@ -14,3 +14,15 @@
 1. 进入网站根据信息选择安装程序 <https://developer.nvidia.com/cuda-toolkit-archive>
 
 
+### 设置快捷方式全屏打开
+
+Chrome: `设置` - `投放，保存与分享` - `创建快捷方式`
+
+``` bash
+# 不能用 f11 或 Esc 退出
+chrome --kiosk https://www.baidu.com
+
+chrome --start-fullscreen https://www.baidu.com
+```
+
+快捷方式图标需要 `.ico` 文件

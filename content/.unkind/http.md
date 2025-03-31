@@ -9,10 +9,10 @@ date: 2018-01-01
   - `flowers` return a list of all flowers
   - `flowers/:id` return a specific car
   - status: `200` `404`
-- POST: 向服务器提交资源 
+- POST: 向服务器创建资源 
   - `flowers` post a new flower
   - status: `201`
-- PUT: 类似POST但用来替换资源
+- PUT: 类似PATCH但用来整体替换资源
 - DELETE - 从服务器上删除资源
   - `flowers/:id` delete a specific flower
   - status: `204`

@@ -55,6 +55,13 @@ index: Framework.Blender.Syntax
 
 
 Alt + G: 模型居中
+
+Alt + z: 进入 X-Ray 模式。所有模型半透明
+z 选择预览模式
+  - 线框
+	- 实体
+		- 视图着色方式(右上角下拉)-颜色-随机
+
 Num 1 Num6 Num6 Num8 Num8
 Ctrl + Alt + Num0 摄像机视角
 

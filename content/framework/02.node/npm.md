@@ -61,6 +61,9 @@ sharp_libvips_binary_host = "https://npmmirror.com/mirrors/sharp-libvips/"
 # https://github.com/electron-userland/electron-builder/issues/6289#issuecomment-1042620422
 shamefully-hoist=true
 
+# 修改镜像源
+registry=https://registry.npmmirror.com
+
 # For China 🇨🇳 developers
 electron_mirror=https://npmmirror.com/mirrors/electron/
 electron_builder_binaries_mirror=https://registry.npmmirror.com/mirrors/electron-builder-binaries/
@@ -75,12 +78,13 @@ $ npm i -g nrm
 
 $ nrm ls
 
-# npm ---------- https://registry.npmjs.org/
-# yarn --------- https://registry.yarnpkg.com/
-# tencent ------ https://mirrors.cloud.tencent.com/npm/
-# cnpm --------- https://r.cnpmjs.org/
-# taobao ------- https://registry.npmmirror.com/
-# npmMirror ---- https://skimdb.npmjs.com/registry/
+#   npm ---------- https://registry.npmjs.org/
+#   yarn --------- https://registry.yarnpkg.com/
+#   tencent ------ https://mirrors.tencent.com/npm/
+#   cnpm --------- https://r.cnpmjs.org/
+# * taobao ------- https://registry.npmmirror.com/
+#   npmMirror ---- https://skimdb.npmjs.com/registry/
+#   huawei ------- https://repo.huaweicloud.com/repository/npm/
 
 $ nrm use taobao
 ```
