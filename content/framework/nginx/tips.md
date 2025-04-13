@@ -134,3 +134,34 @@ https://www.barretlee.com/blog/2016/11/19/nginx-configuration-start/
 
 1. 在运营商处未二级域名添加解析(多个二级域名解析到同一个 ip 即可)
 2. 在nginx server 模块中添加配置 `server_name  2.yourdomain.top two.youdomain.cc;`
+
+
+
+### 移动端跳转 
+
+``` 
+map $http_user_agent $is_mobile {
+    default 0;
+    "~*(iphone|ipod|android|webos|blackberry|opera mini|iemobile|windows phone)" 1;
+}
+
+server {
+    listen 8085;
+    server_name localhost;
+
+    root /home/user/ansteel-design-smart-work/web/dist;
+    index index.html index.htm;
+
+    # 仅在访问 "/" 时进行手机端重定向，避免循环
+    location = / {
+        if ($is_mobile) {
+            return 301 /mobile/projects;
+        }
+        try_files $uri $uri/ /index.html;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
