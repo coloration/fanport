@@ -89,6 +89,7 @@ sudo chown www:www -R $DEPLOY_PATH
 ### 查看远程源信息 
 
 ``` bash
+$ git fetch
 $ git remote -v ## --verbose
 
 ```
@@ -106,6 +107,27 @@ $ git remote add origin git@xx.xxx.xx.xx:~/xxx.git
 # git push -u <origin_name> (<branch_name>)
 $ git push -u origin master
 ```
+
+
+``` bash
+# 切换到其他分支
+$ git checkout main
+$ git branch -d dev
+```
+
+### 暂存 stash
+
+``` bash
+$ git stash -m "保存未完成的修改"
+# 预想操作
+$ git checkout dev
+$ git pull --rebase
+
+$git stash pop
+```
+
+
+## ERROR
 
 ### 拉取代码时报错 `error: invalid path <path>`
 
